@@ -1,0 +1,100 @@
+{
+ "runs": 100,
+ "rounds": 40,
+ "mechanism": "call_auction",
+ "variant": "anchored",
+ "market": {
+  "n_trades": {
+   "mean": 0,
+   "sd": 0.0,
+   "min": 0,
+   "max": 0
+  },
+  "volume": {
+   "mean": 0,
+   "sd": 0.0,
+   "min": 0,
+   "max": 0
+  },
+  "last_price": null,
+  "max_price": null,
+  "min_price": null
+ },
+ "runs_end_above_105": 0,
+ "runs_end_below_95": 0,
+ "runs_no_trades": 100,
+ "pnl_at_fundamental_100": {
+  "momentum": {
+   "mean": 0,
+   "sd": 0.0,
+   "min": 0,
+   "max": 0,
+   "win_rate": 0.0
+  },
+  "value": {
+   "mean": 0,
+   "sd": 0.0,
+   "min": 0,
+   "max": 0,
+   "win_rate": 0.0
+  },
+  "mm": {
+   "mean": 0,
+   "sd": 0.0,
+   "min": 0,
+   "max": 0,
+   "win_rate": 0.0
+  },
+  "conservative": {
+   "mean": 0,
+   "sd": 0.0,
+   "min": 0,
+   "max": 0,
+   "win_rate": 0.0
+  },
+  "aggressive": {
+   "mean": 0,
+   "sd": 0.0,
+   "min": 0,
+   "max": 0,
+   "win_rate": 0.0
+  }
+ },
+ "pnl_at_last_price": {
+  "momentum": {
+   "mean": 0,
+   "sd": 0.0,
+   "min": 0,
+   "max": 0,
+   "win_rate": 0.0
+  },
+  "value": {
+   "mean": 0,
+   "sd": 0.0,
+   "min": 0,
+   "max": 0,
+   "win_rate": 0.0
+  },
+  "mm": {
+   "mean": 0,
+   "sd": 0.0,
+   "min": 0,
+   "max": 0,
+   "win_rate": 0.0
+  },
+  "conservative": {
+   "mean": 0,
+   "sd": 0.0,
+   "min": 0,
+   "max": 0,
+   "win_rate": 0.0
+  },
+  "aggressive": {
+   "mean": 0,
+   "sd": 0.0,
+   "min": 0,
+   "max": 0,
+   "win_rate": 0.0
+  }
+ }
+}

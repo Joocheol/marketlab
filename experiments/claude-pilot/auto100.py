@@ -55,15 +55,16 @@ def apply_decision(gw, eng, aid, orders, rnd, tag):
         gw.cancel(leftover, gw.epoch)
 
 
-def run_once(run_seed, rounds, mechanism="cda"):
+def run_once(run_seed, rounds, mechanism="cda", personas=None):
+    personas = personas or PERSONAS
     eng = MarketEngine(MECHANISMS[mechanism](), BestQuoteOnly(), seed=run_seed)
     gw = Gateway(eng)
     agents = {}
-    for aid, (cls, cash, shares) in PERSONAS.items():
+    for aid, (cls, cash, shares) in personas.items():
         agents[aid] = cls(aid, cash, shares, seed=f"{aid}-{run_seed}")
         gw.create_account(aid, cash, shares)
-    totals = (sum(c for _, c, _ in PERSONAS.values()),
-              sum(s for _, _, s in PERSONAS.values()))
+    totals = (sum(c for _, c, _ in personas.values()),
+              sum(s for _, _, s in personas.values()))
 
     recent, seen = [], 0
     shuffle_rng = random.Random(f"auto-shuffle-{run_seed}")
@@ -91,7 +92,7 @@ def run_once(run_seed, rounds, mechanism="cda"):
            "max_price": max(prices) if prices else None,
            "min_price": min(prices) if prices else None,
            "violations": len(errs), "hash": state_hash(eng.state)[:16]}
-    for aid, (_, cash0, shares0) in PERSONAS.items():
+    for aid, (_, cash0, shares0) in personas.items():
         a = eng.state["accounts"][aid]
         cash = a["cash"] + a["res_cash"]
         sh = a["shares"] + a["res_shares"]
@@ -114,13 +115,19 @@ def main():
     n_runs = int(sys.argv[1]) if len(sys.argv) > 1 else 100
     rounds = int(sys.argv[2]) if len(sys.argv) > 2 else 40
     mechanism = sys.argv[3] if len(sys.argv) > 3 else "cda"
-    rows = [run_once(s, rounds, mechanism) for s in range(n_runs)]
+    variant = sys.argv[4] if len(sys.argv) > 4 else "base"
+    if variant == "anchored":
+        from policies_anchored import PERSONAS as personas
+    else:
+        personas = PERSONAS
+    rows = [run_once(s, rounds, mechanism, personas) for s in range(n_runs)]
 
     # 결정론 확인: 런0 재실행 해시 일치
-    assert run_once(0, rounds, mechanism)["hash"] == rows[0]["hash"], "non-deterministic run!"
+    assert run_once(0, rounds, mechanism, personas)["hash"] == rows[0]["hash"], "non-deterministic run!"
     assert sum(r["violations"] for r in rows) == 0, "invariant violations!"
 
     out = {"runs": n_runs, "rounds": rounds, "mechanism": mechanism,
+           "variant": variant,
            "market": {k: summarize(rows, k) for k in
                       ("n_trades", "volume", "last_price", "max_price", "min_price")},
            "runs_end_above_105": sum(1 for r in rows if (r["last_price"] or 0) > 105),
@@ -128,7 +135,7 @@ def main():
                                     if r["last_price"] is not None and r["last_price"] < 95),
            "runs_no_trades": sum(1 for r in rows if r["n_trades"] == 0),
            "pnl_at_fundamental_100": {}, "pnl_at_last_price": {}}
-    for aid in PERSONAS:
+    for aid in personas:
         s100 = summarize(rows, f"pnl100_{aid}")
         sL = summarize(rows, f"pnlL_{aid}")
         s100["win_rate"] = sum(1 for r in rows if r[f"pnl100_{aid}"] > 0) / n_runs
@@ -137,7 +144,7 @@ def main():
         out["pnl_at_last_price"][aid] = sL
 
     here = pathlib.Path(__file__).parent
-    suffix = "" if mechanism == "cda" else f"-{mechanism}"
+    suffix = ("" if mechanism == "cda" else f"-{mechanism}") + ("" if variant == "base" else f"-{variant}")
     (here / f"auto100-rows{suffix}.json").write_text(json.dumps(rows, indent=1))
     (here / f"auto100-summary{suffix}.json").write_text(json.dumps(out, indent=1))
     print(json.dumps(out, indent=1, ensure_ascii=False))
