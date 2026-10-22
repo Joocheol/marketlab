@@ -29,11 +29,13 @@ from marketlab.core.state import state_hash               # noqa: E402
 from marketlab.disclosure.policies import BestQuoteOnly   # noqa: E402
 from marketlab.gateway.ingress import Gateway             # noqa: E402
 from marketlab.mechanisms.cda import CDA                  # noqa: E402
+from marketlab.mechanisms.call_auction import CallAuction  # noqa: E402
 
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 from policies import PERSONAS                             # noqa: E402
 
 FUNDAMENTAL = 100
+MECHANISMS = {"cda": CDA, "call_auction": CallAuction}
 
 
 def apply_decision(gw, eng, aid, orders, rnd, tag):
@@ -53,8 +55,8 @@ def apply_decision(gw, eng, aid, orders, rnd, tag):
         gw.cancel(leftover, gw.epoch)
 
 
-def run_once(run_seed, rounds):
-    eng = MarketEngine(CDA(), BestQuoteOnly(), seed=run_seed)
+def run_once(run_seed, rounds, mechanism="cda"):
+    eng = MarketEngine(MECHANISMS[mechanism](), BestQuoteOnly(), seed=run_seed)
     gw = Gateway(eng)
     agents = {}
     for aid, (cls, cash, shares) in PERSONAS.items():
@@ -111,13 +113,14 @@ def summarize(rows, key):
 def main():
     n_runs = int(sys.argv[1]) if len(sys.argv) > 1 else 100
     rounds = int(sys.argv[2]) if len(sys.argv) > 2 else 40
-    rows = [run_once(s, rounds) for s in range(n_runs)]
+    mechanism = sys.argv[3] if len(sys.argv) > 3 else "cda"
+    rows = [run_once(s, rounds, mechanism) for s in range(n_runs)]
 
     # 결정론 확인: 런0 재실행 해시 일치
-    assert run_once(0, rounds)["hash"] == rows[0]["hash"], "non-deterministic run!"
+    assert run_once(0, rounds, mechanism)["hash"] == rows[0]["hash"], "non-deterministic run!"
     assert sum(r["violations"] for r in rows) == 0, "invariant violations!"
 
-    out = {"runs": n_runs, "rounds": rounds,
+    out = {"runs": n_runs, "rounds": rounds, "mechanism": mechanism,
            "market": {k: summarize(rows, k) for k in
                       ("n_trades", "volume", "last_price", "max_price", "min_price")},
            "runs_end_above_105": sum(1 for r in rows if (r["last_price"] or 0) > 105),
@@ -134,8 +137,9 @@ def main():
         out["pnl_at_last_price"][aid] = sL
 
     here = pathlib.Path(__file__).parent
-    (here / "auto100-rows.json").write_text(json.dumps(rows, indent=1))
-    (here / "auto100-summary.json").write_text(json.dumps(out, indent=1))
+    suffix = "" if mechanism == "cda" else f"-{mechanism}"
+    (here / f"auto100-rows{suffix}.json").write_text(json.dumps(rows, indent=1))
+    (here / f"auto100-summary{suffix}.json").write_text(json.dumps(out, indent=1))
     print(json.dumps(out, indent=1, ensure_ascii=False))
 
 

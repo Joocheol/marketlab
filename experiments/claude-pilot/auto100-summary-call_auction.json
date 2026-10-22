@@ -1,0 +1,114 @@
+{
+ "runs": 100,
+ "rounds": 40,
+ "mechanism": "call_auction",
+ "market": {
+  "n_trades": {
+   "mean": 21.68,
+   "sd": 7.681645446626443,
+   "min": 1,
+   "max": 46
+  },
+  "volume": {
+   "mean": 39.72,
+   "sd": 14.023126641661651,
+   "min": 1,
+   "max": 83
+  },
+  "last_price": {
+   "mean": 101.84,
+   "sd": 26.44709603886387,
+   "min": 62,
+   "max": 141
+  },
+  "max_price": {
+   "mean": 115.13,
+   "sd": 13.146920367580963,
+   "min": 99,
+   "max": 141
+  },
+  "min_price": {
+   "mean": 89.3,
+   "sd": 14.812293556503679,
+   "min": 62,
+   "max": 105
+  }
+ },
+ "runs_end_above_105": 47,
+ "runs_end_below_95": 43,
+ "runs_no_trades": 0,
+ "pnl_at_fundamental_100": {
+  "momentum": {
+   "mean": -246.55,
+   "sd": 112.8509676923105,
+   "min": -536,
+   "max": 0,
+   "win_rate": 0.0
+  },
+  "value": {
+   "mean": 260.81,
+   "sd": 112.42332471241873,
+   "min": 0,
+   "max": 611,
+   "win_rate": 0.92
+  },
+  "mm": {
+   "mean": 208.06,
+   "sd": 109.33978362347477,
+   "min": -30,
+   "max": 392,
+   "win_rate": 0.96
+  },
+  "conservative": {
+   "mean": 14.27,
+   "sd": 23.009376656950405,
+   "min": 0,
+   "max": 109,
+   "win_rate": 0.48
+  },
+  "aggressive": {
+   "mean": -236.59,
+   "sd": 115.1018078121111,
+   "min": -543,
+   "max": 20,
+   "win_rate": 0.05
+  }
+ },
+ "pnl_at_last_price": {
+  "momentum": {
+   "mean": 206.26,
+   "sd": 145.24090889333354,
+   "min": -359,
+   "max": 633,
+   "win_rate": 0.87
+  },
+  "value": {
+   "mean": -217.27,
+   "sd": 174.70962084602445,
+   "min": -530,
+   "max": 562,
+   "win_rate": 0.05
+  },
+  "mm": {
+   "mean": -178.2,
+   "sd": 93.68364992156455,
+   "min": -422,
+   "max": 50,
+   "win_rate": 0.02
+  },
+  "conservative": {
+   "mean": -7.37,
+   "sd": 18.93777956756005,
+   "min": -73,
+   "max": 104,
+   "win_rate": 0.05
+  },
+  "aggressive": {
+   "mean": 196.58,
+   "sd": 137.12607043126116,
+   "min": -352,
+   "max": 641,
+   "win_rate": 0.88
+  }
+ }
+}
