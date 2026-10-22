@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Extension-Name: mock
+Class-Manager: org.nlogo.extensions.mock.MockExtension
+NetLogo-Extension-API-Version: 7.0

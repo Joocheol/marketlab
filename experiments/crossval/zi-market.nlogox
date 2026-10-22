@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<model version="NetLogo 7.0.4" snapToGrid="false">
+  <code><![CDATA[;; Gode-Sunder ZI-C CDA 시장 — marketlab 교차 검증용 이식.
+;; marketlab의 SyncRounds + ZITrader + CDA 의미론을 그대로 따른다:
+;;   1단계: 전원이 '라운드 시작 상태' 기준으로 의도를 정한다 (상태 불변)
+;;   2단계: 셔플 순서(ask의 기본 순서)로 집행한다
+;;   미체결 주문 보유 시 취소만 하고 재호가하지 않는다 (이중 노출 방지)
+;;   체결가 = 먼저 쉬고 있던(resting) 주문의 지정가, 가격-시간 우선
+
+globals [ bids asks next-seq trade-prices max-surplus ]
+breed [ traders trader ]
+traders-own [ role limit-value traded? intent ]
+
+to setup
+  clear-all
+  set bids []            ;; [price seq who] 목록, 가격 내림차순·seq 오름차순
+  set asks []            ;; [price seq who] 목록, 가격 오름차순·seq 오름차순
+  set next-seq 0
+  set trade-prices []
+  foreach [150 145 140 135 130 125 120 115 110 105 90 85 80] [ v ->
+    create-traders 1 [ set role "buyer" set limit-value v set traded? false hide-turtle ] ]
+  foreach [50 55 60 65 70 75 80 85 90 95 110 115 120] [ c ->
+    create-traders 1 [ set role "seller" set limit-value c set traded? false hide-turtle ] ]
+  set max-surplus 550    ;; 경쟁 균형 잉여: (150+...+105) - (50+...+95)
+  reset-ticks
+end
+
+to go
+  ask traders [ set intent compute-intent ]   ;; 1단계: 판단 (상태 불변)
+  ask traders [ execute-intent ]              ;; 2단계: 셔플 집행
+  tick
+end
+
+to-report compute-intent
+  if traded? [ report "none" ]
+  if has-open-order? [ report "cancel" ]
+  ifelse role = "buyer"
+    [ report 1 + random limit-value ]                     ;; U[1, v]
+    [ report limit-value + random (201 - limit-value) ]   ;; U[c, 200]
+end
+
+to-report has-open-order?
+  let mine filter [ o -> item 2 o = who ] (sentence bids asks)
+  report not empty? mine
+end
+
+to execute-intent
+  if intent = "none" [ stop ]
+  if intent = "cancel" [ cancel-my-order stop ]
+  ifelse role = "buyer" [ submit-buy intent ] [ submit-sell intent ]
+end
+
+to cancel-my-order
+  set bids filter [ o -> item 2 o != who ] bids
+  set asks filter [ o -> item 2 o != who ] asks
+end
+
+to submit-buy [ p ]
+  let matched? false
+  if not empty? asks [ if item 0 (first asks) <= p [ set matched? true ] ]
+  ifelse matched?
+  [ let o first asks
+    set asks but-first asks
+    record-trade (item 0 o) who (item 2 o) ]
+  [ set bids sort-by [ [a b] ->
+      (item 0 a > item 0 b) or (item 0 a = item 0 b and item 1 a < item 1 b) ]
+      (lput (list p next-seq who) bids)
+    set next-seq next-seq + 1 ]
+end
+
+to submit-sell [ p ]
+  let matched? false
+  if not empty? bids [ if item 0 (first bids) >= p [ set matched? true ] ]
+  ifelse matched?
+  [ let o first bids
+    set bids but-first bids
+    record-trade (item 0 o) (item 2 o) who ]
+  [ set asks sort-by [ [a b] ->
+      (item 0 a < item 0 b) or (item 0 a = item 0 b and item 1 a < item 1 b) ]
+      (lput (list p next-seq who) asks)
+    set next-seq next-seq + 1 ]
+end
+
+to record-trade [ p buyer-who seller-who ]
+  set trade-prices lput p trade-prices
+  ask trader buyer-who [ set traded? true ]
+  ask trader seller-who [ set traded? true ]
+end
+
+to-report efficiency
+  report ((sum [limit-value] of traders with [traded? and role = "buyer"])
+        - (sum [limit-value] of traders with [traded? and role = "seller"]))
+        / max-surplus
+end]]></code>
+  <widgets>
+    <view x="0" y="0" width="120" height="120" minPxcor="-5" maxPxcor="5" minPycor="-5" maxPycor="5" patchSize="10.0" frameRate="30.0" wrappingAllowedX="true" wrappingAllowedY="true" showTickCounter="true" tickCounterLabel="ticks" fontSize="10" updateMode="0"></view>
+  </widgets>
+</model>

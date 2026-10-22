@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<model version="NetLogo 7.0.4" snapToGrid="false">
+  <code><![CDATA[extensions [ mock ]
+
+globals [ fetched last-order ]]]></code>
+  <widgets>
+    <view x="0" y="0" width="120" height="120" minPxcor="-5" maxPxcor="5" minPycor="-5" maxPycor="5" patchSize="10.0" frameRate="30.0" wrappingAllowedX="true" wrappingAllowedY="true" showTickCounter="true" tickCounterLabel="ticks" fontSize="10" updateMode="0"></view>
+  </widgets>
+</model>

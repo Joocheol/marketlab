@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<experiments>
+  <experiment name="repro" repetitions="6" sequentialRunOrder="true" runMetricsEveryStep="false" timeLimit="100">
+    <setup>random-seed (1000 + behaviorspace-run-number) setup</setup>
+    <go>go</go>
+    <postRun>export-world (word "world-run" behaviorspace-run-number ".csv")</postRun>
+    <metrics>
+      <metric>count sheep</metric>
+      <metric>count wolves</metric>
+      <metric>sum [xcor + ycor] of turtles</metric>
+    </metrics>
+  </experiment>
+</experiments>

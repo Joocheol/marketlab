@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<experiments>
+  <experiment name="contamination" repetitions="12" sequentialRunOrder="true" runMetricsEveryStep="false" timeLimit="1">
+    <setup>setup</setup>
+    <go>go</go>
+    <metrics>
+      <metric>[pcolor] of patch 0 0</metric>
+      <metric>runs-seen-by-this-workspace</metric>
+    </metrics>
+  </experiment>
+</experiments>

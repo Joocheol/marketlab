@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<experiments>
+  <experiment name="crossval" repetitions="100" sequentialRunOrder="true" runMetricsEveryStep="false" timeLimit="100">
+    <setup>random-seed (9000 + behaviorspace-run-number) setup</setup>
+    <go>go</go>
+    <metrics>
+      <metric>efficiency</metric>
+      <metric>ifelse-value empty? trade-prices [0] [mean trade-prices]</metric>
+      <metric>length trade-prices</metric>
+      <metric>ifelse-value (length trade-prices &lt; 2) [0] [standard-deviation trade-prices]</metric>
+    </metrics>
+  </experiment>
+</experiments>

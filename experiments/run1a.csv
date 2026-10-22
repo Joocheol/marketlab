@@ -1,0 +1,7 @@
+"BehaviorSpace results (NetLogo 7.0.4)","Table version 2.0"
+"../downloads/netlogo-7.0.4/models/Sample Models/Biology/Wolf Sheep Predation.nlogox"
+"repro"
+"10/22/2026 13:46:53:691 +0900"
+"min-pxcor","max-pxcor","min-pycor","max-pycor"
+"-25","25","-25","25"
+"[run number]","[step]","__checksum","count sheep","count wolves","sum [xcor + ycor] of turtles"

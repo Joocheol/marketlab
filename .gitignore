@@ -1,0 +1,19 @@
+# 대용량·재생성 가능 항목 (분석용 클론과 NetLogo 릴리스, 빌드 산출물)
+downloads/
+repos/
+
+# 빌드 산출물 (소스에서 재생성)
+experiments/mockext/classes/
+experiments/driver/classes/
+experiments/extensions/
+
+# 재생성 가능한 실험 덤프 (세계 내보내기 패스들)
+experiments/pass*/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# macOS
+.DS_Store
