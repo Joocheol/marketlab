@@ -17,3 +17,6 @@ __pycache__/
 
 # macOS
 .DS_Store
+
+# 기준선 실험 런 기록 (대용량, record.json 재현 패키지들)
+experiments/baseline/runs/
