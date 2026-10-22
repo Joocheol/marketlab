@@ -1,0 +1,15 @@
+{
+ "round": 2,
+ "decisions": [
+  {"agent": "momentum", "orders": [{"side": "buy", "price": 103, "qty": 4}],
+   "raw": "BUY 4 @ 103 / 첫 체결 102 상승 모멘텀 초기 신호에 공격적 매수."},
+  {"agent": "value", "orders": [{"side": "sell", "price": 105, "qty": 3}],
+   "raw": "SELL 3 @ 105 / 상방 압력, 고평가 기준선 105 매도 대기(95 매수 교체)."},
+  {"agent": "mm", "orders": [{"side": "buy", "price": 102, "qty": 2}, {"side": "sell", "price": 103, "qty": 2}],
+   "raw": "BUY 2@102 + SELL 2@103 / 호가대 상향 양방향 재공급."},
+  {"agent": "conservative", "orders": [{"side": "sell", "price": 112, "qty": 1}],
+   "raw": "SELL 1 @ 112 / 명백히 비싼 112에 1주 매도(88 매수 교체)."},
+  {"agent": "aggressive", "orders": [{"side": "sell", "price": 110, "qty": 8}],
+   "raw": "SELL 8 @ 110 / 유일한 매도벽을 110에 세워 추격 매수세에 고가 매도(102 매수 교체)."}
+ ]
+}

@@ -1,0 +1,13 @@
+{
+ "round": 3,
+ "decisions": [
+  {"agent": "momentum", "orders": [{"side": "buy", "price": 105, "qty": 5}],
+   "raw": "BUY 5 @ 105 / 102→103 연속 상승, 매도호가 105를 걷어내며 최대 수량 편승."},
+  {"agent": "value", "action": "hold", "raw": "HOLD / 105 매도 대기 유지."},
+  {"agent": "mm", "orders": [{"side": "buy", "price": 104, "qty": 2}, {"side": "sell", "price": 105, "qty": 2}],
+   "raw": "BUY 2@104 + SELL 2@105 / 재고 26, 호가대 상향 유지."},
+  {"agent": "conservative", "action": "hold", "raw": "HOLD / 112 매도 유지, 추가 위험 없음."},
+  {"agent": "aggressive", "orders": [{"side": "buy", "price": 105, "qty": 8}],
+   "raw": "BUY 8 @ 105 / 상승세에 105 물량을 걷어 포지션 확대(110 매도 교체)."}
+ ]
+}

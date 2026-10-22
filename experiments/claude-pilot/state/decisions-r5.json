@@ -1,0 +1,15 @@
+{
+ "round": 5,
+ "decisions": [
+  {"agent": "momentum", "orders": [{"side": "buy", "price": 110, "qty": 5}],
+   "raw": "BUY 5 @ 110 / 상승 추세 유지, 마지막까지 모멘텀 편승, 110 매도호가 수취."},
+  {"agent": "value", "orders": [{"side": "sell", "price": 108, "qty": 3}],
+   "raw": "SELL 3 @ 108 / 내재가치 100 대비 8% 고평가, 괴리 수익 확정."},
+  {"agent": "mm", "orders": [{"side": "buy", "price": 107, "qty": 2}, {"side": "sell", "price": 109, "qty": 2}],
+   "raw": "BUY 2@107 + SELL 2@109 / 스프레드 안쪽 대칭 호가, 재고 중립 유지."},
+  {"agent": "conservative", "orders": [{"side": "sell", "price": 108, "qty": 1}],
+   "raw": "SELL 1 @ 108 / 마지막 라운드, 명백히 높은 108에 확정 매도(112 교체)."},
+  {"agent": "aggressive", "orders": [{"side": "sell", "price": 108, "qty": 8}],
+   "raw": "SELL 8 @ 108 / 미체결 위험 회피, 108 즉시 체결로 차익 확정(111 교체)."}
+ ]
+}

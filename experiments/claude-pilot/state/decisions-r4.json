@@ -1,0 +1,14 @@
+{
+ "round": 4,
+ "decisions": [
+  {"agent": "momentum", "orders": [{"side": "buy", "price": 108, "qty": 5}],
+   "raw": "BUY 5 @ 108 / 3연속 상승 — 112 추격 대신 108 최우선 매수 선점."},
+  {"agent": "value", "orders": [{"side": "sell", "price": 105, "qty": 3}],
+   "raw": "SELL 3 @ 105 / 고평가 지속, 매수호가 105를 쳐서 추가 분할 매도."},
+  {"agent": "mm", "orders": [{"side": "buy", "price": 106, "qty": 2}, {"side": "sell", "price": 110, "qty": 2}],
+   "raw": "BUY 2@106 + SELL 2@110 / 스프레드 확대 구간 양방향, 재고 보충 우선."},
+  {"agent": "conservative", "action": "hold", "raw": "HOLD / 112 매도 유지."},
+  {"agent": "aggressive", "orders": [{"side": "sell", "price": 111, "qty": 8}],
+   "raw": "SELL 8 @ 111 / 모은 물량을 112 바로 아래 111에서 차익 실현(105 매수 교체)."}
+ ]
+}

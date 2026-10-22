@@ -1,0 +1,12 @@
+{
+ "round": 1,
+ "decisions": [
+  {"agent": "momentum", "action": "hold", "raw": "HOLD / 체결가 미형성·추세 불명, 기존 주문 유지."},
+  {"agent": "value", "action": "hold", "raw": "HOLD / 100-102는 무거래 구간, 95 매수 유지."},
+  {"agent": "mm", "orders": [{"side": "buy", "price": 101, "qty": 2}],
+   "raw": "BUY 2 @ 101 / 기존 98 매수를 101로 올려 최우선 매수 확보, 102 매도와 1틱 스프레드."},
+  {"agent": "conservative", "action": "hold", "raw": "HOLD / 유리하지 않음, 88 매수 유지."},
+  {"agent": "aggressive", "orders": [{"side": "buy", "price": 102, "qty": 8}],
+   "raw": "BUY 8 @ 102 / 102 매도물량을 걷어 상승 모멘텀 선제 베팅."}
+ ]
+}

@@ -1,0 +1,15 @@
+{
+ "round": 0,
+ "decisions": [
+  {"agent": "momentum", "orders": [{"side": "buy", "price": 100, "qty": 2}],
+   "raw": "ORDER: BUY 2 @ 100 / REASON: 추세 신호 부재 — 참고가 수준 소량 매수로 유동성 탐색, 체결가 형성 시 추세 판단."},
+  {"agent": "value", "orders": [{"side": "buy", "price": 95, "qty": 3}],
+   "raw": "ORDER: BUY 3 @ 95 / REASON: 내재가치 100 대비 할인된 95에 지정가 매수 대기."},
+  {"agent": "mm", "orders": [{"side": "buy", "price": 98, "qty": 2}, {"side": "sell", "price": 102, "qty": 2}],
+   "raw": "ORDER: BUY 2 @ 98 / ORDER: SELL 2 @ 102 / REASON: 참고가 100 대칭 ±2 양방향 호가, 재고 30주 중립."},
+  {"agent": "conservative", "orders": [{"side": "buy", "price": 88, "qty": 1}],
+   "raw": "ORDER: BUY 1 @ 88 / REASON: 명백히 싼 수준에만 소액 지정가."},
+  {"agent": "aggressive", "orders": [{"side": "buy", "price": 96, "qty": 8}],
+   "raw": "ORDER: BUY 8 @ 96 / REASON: 참고가보다 낮은 매수벽 선점."}
+ ]
+}
