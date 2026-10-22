@@ -1,0 +1,1362 @@
+[
+ {
+  "cell": [
+   "cda",
+   "best_quote_only",
+   "zi-only"
+  ],
+  "run_id": "baseline-5179d42b-r0",
+  "n_ticks": 400,
+  "n_trades": 2447,
+  "volume": 2447,
+  "mean_price": 82.28,
+  "mean_spread": 6.138138138138138,
+  "ret_std": 0.06775599332185707,
+  "ex_kurtosis": 0.5318683705787723,
+  "acf1_ret": -0.07351142609161229,
+  "acf1_abs": 0.17445647756327934
+ },
+ {
+  "cell": [
+   "cda",
+   "best_quote_only",
+   "zi-only"
+  ],
+  "run_id": "baseline-5179d42b-r1",
+  "n_ticks": 400,
+  "n_trades": 2409,
+  "volume": 2409,
+  "mean_price": 136.4325,
+  "mean_spread": 6.361963190184049,
+  "ret_std": 0.036850297729891165,
+  "ex_kurtosis": -0.09256568300414658,
+  "acf1_ret": 0.13115774572115602,
+  "acf1_abs": 0.19929943772236042
+ },
+ {
+  "cell": [
+   "cda",
+   "best_quote_only",
+   "zi-only"
+  ],
+  "run_id": "baseline-5179d42b-r2",
+  "n_ticks": 400,
+  "n_trades": 2452,
+  "volume": 2452,
+  "mean_price": 67.3725,
+  "mean_spread": 6.205438066465256,
+  "ret_std": 0.08566463073150535,
+  "ex_kurtosis": 1.289385714937393,
+  "acf1_ret": 0.018725361995372353,
+  "acf1_abs": 0.28709862868122094
+ },
+ {
+  "cell": [
+   "cda",
+   "best_quote_only",
+   "zi-only"
+  ],
+  "run_id": "baseline-5179d42b-r3",
+  "n_ticks": 400,
+  "n_trades": 2436,
+  "volume": 2436,
+  "mean_price": 140.7475,
+  "mean_spread": 5.9875,
+  "ret_std": 0.0363606826943259,
+  "ex_kurtosis": 0.40386932294880484,
+  "acf1_ret": 0.020519452111142467,
+  "acf1_abs": 0.18026589838761659
+ },
+ {
+  "cell": [
+   "cda",
+   "best_quote_only",
+   "zi-only"
+  ],
+  "run_id": "baseline-5179d42b-r4",
+  "n_ticks": 400,
+  "n_trades": 2416,
+  "volume": 2416,
+  "mean_price": 133.0,
+  "mean_spread": 6.511041009463723,
+  "ret_std": 0.036351019010026686,
+  "ex_kurtosis": -0.22544306019526683,
+  "acf1_ret": 0.046588801370489936,
+  "acf1_abs": 0.13741202825196966
+ },
+ {
+  "cell": [
+   "cda",
+   "best_quote_only",
+   "zi-only"
+  ],
+  "run_id": "baseline-5179d42b-r5",
+  "n_ticks": 400,
+  "n_trades": 2500,
+  "volume": 2500,
+  "mean_price": 81.3275,
+  "mean_spread": 6.461538461538462,
+  "ret_std": 0.06943358880372072,
+  "ex_kurtosis": 0.48184606888987425,
+  "acf1_ret": -0.067823623440671,
+  "acf1_abs": 0.13332071117107933
+ },
+ {
+  "cell": [
+   "cda",
+   "best_quote_only",
+   "zi-only"
+  ],
+  "run_id": "baseline-5179d42b-r6",
+  "n_ticks": 400,
+  "n_trades": 2429,
+  "volume": 2429,
+  "mean_price": 68.445,
+  "mean_spread": 6.358208955223881,
+  "ret_std": 0.07809545398276904,
+  "ex_kurtosis": 0.22619283825491188,
+  "acf1_ret": -0.10755962715742641,
+  "acf1_abs": 0.1780539322447372
+ },
+ {
+  "cell": [
+   "cda",
+   "best_quote_only",
+   "zi-only"
+  ],
+  "run_id": "baseline-5179d42b-r7",
+  "n_ticks": 400,
+  "n_trades": 2422,
+  "volume": 2422,
+  "mean_price": 69.5275,
+  "mean_spread": 5.705521472392638,
+  "ret_std": 0.31046959808278274,
+  "ex_kurtosis": 24.192218074314525,
+  "acf1_ret": -0.20843163412386248,
+  "acf1_abs": 0.44991234008586617
+ },
+ {
+  "cell": [
+   "cda",
+   "best_quote_only",
+   "zi-only"
+  ],
+  "run_id": "baseline-5179d42b-r8",
+  "n_ticks": 400,
+  "n_trades": 2393,
+  "volume": 2393,
+  "mean_price": 78.455,
+  "mean_spread": 6.038922155688622,
+  "ret_std": 0.07630815327489018,
+  "ex_kurtosis": 0.6583992042631959,
+  "acf1_ret": -0.11400161577485812,
+  "acf1_abs": 0.31240643357081477
+ },
+ {
+  "cell": [
+   "cda",
+   "best_quote_only",
+   "zi-only"
+  ],
+  "run_id": "baseline-5179d42b-r9",
+  "n_ticks": 400,
+  "n_trades": 2414,
+  "volume": 2414,
+  "mean_price": 103.0975,
+  "mean_spread": 6.152439024390244,
+  "ret_std": 0.045523768445126477,
+  "ex_kurtosis": 0.0154089847593597,
+  "acf1_ret": -0.12103791905009494,
+  "acf1_abs": 0.0457093290613496
+ },
+ {
+  "cell": [
+   "cda",
+   "best_quote_only",
+   "mixed"
+  ],
+  "run_id": "baseline-18827d0f-r0",
+  "n_ticks": 400,
+  "n_trades": 2121,
+  "volume": 2121,
+  "mean_price": 81.965,
+  "mean_spread": 4.137466307277628,
+  "ret_std": 0.03962099200677518,
+  "ex_kurtosis": 1.3166709870293891,
+  "acf1_ret": -0.13266656011088607,
+  "acf1_abs": 0.10641682804373363
+ },
+ {
+  "cell": [
+   "cda",
+   "best_quote_only",
+   "mixed"
+  ],
+  "run_id": "baseline-18827d0f-r1",
+  "n_ticks": 400,
+  "n_trades": 2105,
+  "volume": 2105,
+  "mean_price": 69.6375,
+  "mean_spread": 4.365853658536586,
+  "ret_std": 0.05171718562377295,
+  "ex_kurtosis": 1.051434155662255,
+  "acf1_ret": -0.21941868015471197,
+  "acf1_abs": 0.1005131412313849
+ },
+ {
+  "cell": [
+   "cda",
+   "best_quote_only",
+   "mixed"
+  ],
+  "run_id": "baseline-18827d0f-r2",
+  "n_ticks": 400,
+  "n_trades": 2118,
+  "volume": 2118,
+  "mean_price": 76.985,
+  "mean_spread": 4.183561643835616,
+  "ret_std": 0.04819692643256525,
+  "ex_kurtosis": 1.5818241008779488,
+  "acf1_ret": -0.05983424621166366,
+  "acf1_abs": 0.24898785048194086
+ },
+ {
+  "cell": [
+   "cda",
+   "best_quote_only",
+   "mixed"
+  ],
+  "run_id": "baseline-18827d0f-r3",
+  "n_ticks": 400,
+  "n_trades": 2096,
+  "volume": 2096,
+  "mean_price": 91.6475,
+  "mean_spread": 4.122615803814714,
+  "ret_std": 0.037337724873947306,
+  "ex_kurtosis": 0.9578047351959569,
+  "acf1_ret": -0.29119145657767415,
+  "acf1_abs": 0.08121037298833401
+ },
+ {
+  "cell": [
+   "cda",
+   "best_quote_only",
+   "mixed"
+  ],
+  "run_id": "baseline-18827d0f-r4",
+  "n_ticks": 400,
+  "n_trades": 2086,
+  "volume": 2086,
+  "mean_price": 111.52,
+  "mean_spread": 4.274193548387097,
+  "ret_std": 0.031856262334414506,
+  "ex_kurtosis": 0.9545103719399068,
+  "acf1_ret": -0.21140042612332896,
+  "acf1_abs": 0.1594961924734768
+ },
+ {
+  "cell": [
+   "cda",
+   "best_quote_only",
+   "mixed"
+  ],
+  "run_id": "baseline-18827d0f-r5",
+  "n_ticks": 400,
+  "n_trades": 2079,
+  "volume": 2079,
+  "mean_price": 149.3275,
+  "mean_spread": 4.013698630136986,
+  "ret_std": 0.02376049689470725,
+  "ex_kurtosis": 1.3163454930915126,
+  "acf1_ret": -0.1852404486790076,
+  "acf1_abs": 0.17903914781965746
+ },
+ {
+  "cell": [
+   "cda",
+   "best_quote_only",
+   "mixed"
+  ],
+  "run_id": "baseline-18827d0f-r6",
+  "n_ticks": 400,
+  "n_trades": 2095,
+  "volume": 2095,
+  "mean_price": 114.1675,
+  "mean_spread": 4.22972972972973,
+  "ret_std": 0.03272074190665991,
+  "ex_kurtosis": 1.5155958631005637,
+  "acf1_ret": -0.11581974633656951,
+  "acf1_abs": 0.28566082629030365
+ },
+ {
+  "cell": [
+   "cda",
+   "best_quote_only",
+   "mixed"
+  ],
+  "run_id": "baseline-18827d0f-r7",
+  "n_ticks": 400,
+  "n_trades": 1998,
+  "volume": 1998,
+  "mean_price": 133.5775,
+  "mean_spread": 4.084010840108401,
+  "ret_std": 0.02548164730390428,
+  "ex_kurtosis": 1.1197923749127403,
+  "acf1_ret": -0.15787373840544708,
+  "acf1_abs": 0.10528009936294744
+ },
+ {
+  "cell": [
+   "cda",
+   "best_quote_only",
+   "mixed"
+  ],
+  "run_id": "baseline-18827d0f-r8",
+  "n_ticks": 400,
+  "n_trades": 2119,
+  "volume": 2119,
+  "mean_price": 93.76,
+  "mean_spread": 4.0633608815427,
+  "ret_std": 0.03756737878351387,
+  "ex_kurtosis": 1.1041728429034636,
+  "acf1_ret": -0.04259574268720662,
+  "acf1_abs": 0.09928923203794847
+ },
+ {
+  "cell": [
+   "cda",
+   "best_quote_only",
+   "mixed"
+  ],
+  "run_id": "baseline-18827d0f-r9",
+  "n_ticks": 400,
+  "n_trades": 2016,
+  "volume": 2016,
+  "mean_price": 110.2725,
+  "mean_spread": 4.018918918918919,
+  "ret_std": 0.03013116803799958,
+  "ex_kurtosis": 0.4953118488089885,
+  "acf1_ret": -0.18266603922253397,
+  "acf1_abs": 0.035989378292784764
+ },
+ {
+  "cell": [
+   "call_auction",
+   "best_quote_only",
+   "zi-only"
+  ],
+  "run_id": "baseline-bff2d881-r0",
+  "n_ticks": 400,
+  "n_trades": 1544,
+  "volume": 1544,
+  "mean_price": 81.245,
+  "mean_spread": 4.124661246612466,
+  "ret_std": 0.20437312434568225,
+  "ex_kurtosis": 33.69577842250499,
+  "acf1_ret": -0.38157985090465496,
+  "acf1_abs": 0.4591433610322451
+ },
+ {
+  "cell": [
+   "call_auction",
+   "best_quote_only",
+   "zi-only"
+  ],
+  "run_id": "baseline-bff2d881-r1",
+  "n_ticks": 400,
+  "n_trades": 1511,
+  "volume": 1511,
+  "mean_price": 134.255,
+  "mean_spread": 4.1310160427807485,
+  "ret_std": 0.027996692624748028,
+  "ex_kurtosis": 0.9621280190341399,
+  "acf1_ret": 0.09834996488793275,
+  "acf1_abs": -0.048765571618970334
+ },
+ {
+  "cell": [
+   "call_auction",
+   "best_quote_only",
+   "zi-only"
+  ],
+  "run_id": "baseline-bff2d881-r2",
+  "n_ticks": 400,
+  "n_trades": 1544,
+  "volume": 1544,
+  "mean_price": 110.08,
+  "mean_spread": 4.032258064516129,
+  "ret_std": 0.029474367672403166,
+  "ex_kurtosis": 0.2880962524504369,
+  "acf1_ret": -0.028514685971002054,
+  "acf1_abs": -0.07744855912746074
+ },
+ {
+  "cell": [
+   "call_auction",
+   "best_quote_only",
+   "zi-only"
+  ],
+  "run_id": "baseline-bff2d881-r3",
+  "n_ticks": 400,
+  "n_trades": 1573,
+  "volume": 1573,
+  "mean_price": 120.59,
+  "mean_spread": 4.032786885245901,
+  "ret_std": 0.02906462375484606,
+  "ex_kurtosis": 0.14757269159149944,
+  "acf1_ret": -0.011960498903625959,
+  "acf1_abs": 0.021758840735026156
+ },
+ {
+  "cell": [
+   "call_auction",
+   "best_quote_only",
+   "zi-only"
+  ],
+  "run_id": "baseline-bff2d881-r4",
+  "n_ticks": 400,
+  "n_trades": 1502,
+  "volume": 1502,
+  "mean_price": 117.5475,
+  "mean_spread": 3.8529411764705883,
+  "ret_std": 0.030628336973071196,
+  "ex_kurtosis": 2.2375066027842916,
+  "acf1_ret": -0.09420880168668143,
+  "acf1_abs": 0.10454701909643338
+ },
+ {
+  "cell": [
+   "call_auction",
+   "best_quote_only",
+   "zi-only"
+  ],
+  "run_id": "baseline-bff2d881-r5",
+  "n_ticks": 400,
+  "n_trades": 1515,
+  "volume": 1515,
+  "mean_price": 100.9825,
+  "mean_spread": 4.005347593582887,
+  "ret_std": 0.03547060860208695,
+  "ex_kurtosis": 0.615157789498272,
+  "acf1_ret": 0.05255574164034268,
+  "acf1_abs": 0.14738784701391477
+ },
+ {
+  "cell": [
+   "call_auction",
+   "best_quote_only",
+   "zi-only"
+  ],
+  "run_id": "baseline-bff2d881-r6",
+  "n_ticks": 400,
+  "n_trades": 1476,
+  "volume": 1476,
+  "mean_price": 181.44,
+  "mean_spread": 4.029333333333334,
+  "ret_std": 0.0194739343975949,
+  "ex_kurtosis": 0.07261084571121312,
+  "acf1_ret": 0.005658885034228063,
+  "acf1_abs": 0.07249956896608072
+ },
+ {
+  "cell": [
+   "call_auction",
+   "best_quote_only",
+   "zi-only"
+  ],
+  "run_id": "baseline-bff2d881-r7",
+  "n_ticks": 400,
+  "n_trades": 1531,
+  "volume": 1531,
+  "mean_price": 86.7925,
+  "mean_spread": 3.82967032967033,
+  "ret_std": 0.050561081418735734,
+  "ex_kurtosis": 4.620996181015355,
+  "acf1_ret": 0.11458927394175732,
+  "acf1_abs": 0.18130130514752177
+ },
+ {
+  "cell": [
+   "call_auction",
+   "best_quote_only",
+   "zi-only"
+  ],
+  "run_id": "baseline-bff2d881-r8",
+  "n_ticks": 400,
+  "n_trades": 1496,
+  "volume": 1496,
+  "mean_price": 50.6625,
+  "mean_spread": 3.807588075880759,
+  "ret_std": 0.2941874768055966,
+  "ex_kurtosis": 17.972265461589657,
+  "acf1_ret": -0.012383517654403976,
+  "acf1_abs": 0.38288604929274994
+ },
+ {
+  "cell": [
+   "call_auction",
+   "best_quote_only",
+   "zi-only"
+  ],
+  "run_id": "baseline-bff2d881-r9",
+  "n_ticks": 400,
+  "n_trades": 1522,
+  "volume": 1522,
+  "mean_price": 35.5075,
+  "mean_spread": 3.6747967479674797,
+  "ret_std": 0.3401992549144148,
+  "ex_kurtosis": 12.02735603353703,
+  "acf1_ret": -0.30898144861518634,
+  "acf1_abs": 0.4964378559155512
+ },
+ {
+  "cell": [
+   "call_auction",
+   "best_quote_only",
+   "mixed"
+  ],
+  "run_id": "baseline-88b3983c-r0",
+  "n_ticks": 400,
+  "n_trades": 1412,
+  "volume": 1412,
+  "mean_price": 115.55,
+  "mean_spread": 2.8155844155844156,
+  "ret_std": 0.018827694390955545,
+  "ex_kurtosis": 3.3966723831722723,
+  "acf1_ret": -0.1174638368248303,
+  "acf1_abs": 0.15539371614615768
+ },
+ {
+  "cell": [
+   "call_auction",
+   "best_quote_only",
+   "mixed"
+  ],
+  "run_id": "baseline-88b3983c-r1",
+  "n_ticks": 400,
+  "n_trades": 1416,
+  "volume": 1416,
+  "mean_price": 121.7175,
+  "mean_spread": 2.664141414141414,
+  "ret_std": 0.017125857805228198,
+  "ex_kurtosis": 2.9400034282995895,
+  "acf1_ret": -0.03134151687881836,
+  "acf1_abs": 0.13901563855208468
+ },
+ {
+  "cell": [
+   "call_auction",
+   "best_quote_only",
+   "mixed"
+  ],
+  "run_id": "baseline-88b3983c-r2",
+  "n_ticks": 400,
+  "n_trades": 1448,
+  "volume": 1448,
+  "mean_price": 93.025,
+  "mean_spread": 2.788659793814433,
+  "ret_std": 0.02498062192477002,
+  "ex_kurtosis": 2.5020993329397863,
+  "acf1_ret": -0.14783425428300406,
+  "acf1_abs": 0.09421569383528403
+ },
+ {
+  "cell": [
+   "call_auction",
+   "best_quote_only",
+   "mixed"
+  ],
+  "run_id": "baseline-88b3983c-r3",
+  "n_ticks": 400,
+  "n_trades": 1426,
+  "volume": 1426,
+  "mean_price": 89.0825,
+  "mean_spread": 2.7615384615384615,
+  "ret_std": 0.024125195583921805,
+  "ex_kurtosis": 1.9043811041647425,
+  "acf1_ret": -0.1818156621804783,
+  "acf1_abs": 0.17305886928665035
+ },
+ {
+  "cell": [
+   "call_auction",
+   "best_quote_only",
+   "mixed"
+  ],
+  "run_id": "baseline-88b3983c-r4",
+  "n_ticks": 400,
+  "n_trades": 1385,
+  "volume": 1385,
+  "mean_price": 138.865,
+  "mean_spread": 2.6470588235294117,
+  "ret_std": 0.015747550376706786,
+  "ex_kurtosis": 4.96265392071874,
+  "acf1_ret": -0.08635817929745486,
+  "acf1_abs": 0.15281439940864533
+ },
+ {
+  "cell": [
+   "call_auction",
+   "best_quote_only",
+   "mixed"
+  ],
+  "run_id": "baseline-88b3983c-r5",
+  "n_ticks": 400,
+  "n_trades": 1425,
+  "volume": 1425,
+  "mean_price": 114.21,
+  "mean_spread": 2.8191214470284236,
+  "ret_std": 0.02065498366059064,
+  "ex_kurtosis": 5.2862020941336265,
+  "acf1_ret": -0.2482262580945875,
+  "acf1_abs": 0.13284333854113256
+ },
+ {
+  "cell": [
+   "call_auction",
+   "best_quote_only",
+   "mixed"
+  ],
+  "run_id": "baseline-88b3983c-r6",
+  "n_ticks": 400,
+  "n_trades": 1405,
+  "volume": 1405,
+  "mean_price": 116.915,
+  "mean_spread": 2.7943444730077123,
+  "ret_std": 0.019025166943765742,
+  "ex_kurtosis": 2.073438768968371,
+  "acf1_ret": -0.22332674516561063,
+  "acf1_abs": 0.0882386730465207
+ },
+ {
+  "cell": [
+   "call_auction",
+   "best_quote_only",
+   "mixed"
+  ],
+  "run_id": "baseline-88b3983c-r7",
+  "n_ticks": 400,
+  "n_trades": 1416,
+  "volume": 1416,
+  "mean_price": 85.74,
+  "mean_spread": 2.8427835051546393,
+  "ret_std": 0.026632474723793965,
+  "ex_kurtosis": 2.610369633686598,
+  "acf1_ret": -0.18019772382151583,
+  "acf1_abs": 0.157928166130068
+ },
+ {
+  "cell": [
+   "call_auction",
+   "best_quote_only",
+   "mixed"
+  ],
+  "run_id": "baseline-88b3983c-r8",
+  "n_ticks": 400,
+  "n_trades": 1394,
+  "volume": 1394,
+  "mean_price": 78.3675,
+  "mean_spread": 2.610126582278481,
+  "ret_std": 0.027622052092939157,
+  "ex_kurtosis": 5.058626213784725,
+  "acf1_ret": -0.2360862502130055,
+  "acf1_abs": 0.0919468516774667
+ },
+ {
+  "cell": [
+   "call_auction",
+   "best_quote_only",
+   "mixed"
+  ],
+  "run_id": "baseline-88b3983c-r9",
+  "n_ticks": 400,
+  "n_trades": 1362,
+  "volume": 1362,
+  "mean_price": 87.9,
+  "mean_spread": 2.568527918781726,
+  "ret_std": 0.023614873064752004,
+  "ex_kurtosis": 3.5706860730528707,
+  "acf1_ret": -0.21020663505427015,
+  "acf1_abs": 0.09675619305982579
+ },
+ {
+  "cell": [
+   "cda",
+   "trades_only",
+   "zi-only"
+  ],
+  "run_id": "baseline-1b539ae9-r0",
+  "n_ticks": 400,
+  "n_trades": 2381,
+  "volume": 2381,
+  "mean_price": 48.5725,
+  "mean_spread": 6.224242424242425,
+  "ret_std": 0.2959862460000898,
+  "ex_kurtosis": 25.82004090418709,
+  "acf1_ret": -0.2290322663262454,
+  "acf1_abs": 0.6149236083137581
+ },
+ {
+  "cell": [
+   "cda",
+   "trades_only",
+   "zi-only"
+  ],
+  "run_id": "baseline-1b539ae9-r1",
+  "n_ticks": 400,
+  "n_trades": 2499,
+  "volume": 2499,
+  "mean_price": 141.56,
+  "mean_spread": 6.440993788819876,
+  "ret_std": 0.0359280550419242,
+  "ex_kurtosis": 0.03386831342452501,
+  "acf1_ret": -0.06119212229853791,
+  "acf1_abs": 0.04439879373843158
+ },
+ {
+  "cell": [
+   "cda",
+   "trades_only",
+   "zi-only"
+  ],
+  "run_id": "baseline-1b539ae9-r2",
+  "n_ticks": 400,
+  "n_trades": 2431,
+  "volume": 2431,
+  "mean_price": 159.2225,
+  "mean_spread": 6.220543806646526,
+  "ret_std": 0.03458546822037503,
+  "ex_kurtosis": 1.2765062009893686,
+  "acf1_ret": 0.04380140102099626,
+  "acf1_abs": 0.21003125503219636
+ },
+ {
+  "cell": [
+   "cda",
+   "trades_only",
+   "zi-only"
+  ],
+  "run_id": "baseline-1b539ae9-r3",
+  "n_ticks": 400,
+  "n_trades": 2448,
+  "volume": 2448,
+  "mean_price": 139.54,
+  "mean_spread": 6.34384858044164,
+  "ret_std": 0.0335857786303833,
+  "ex_kurtosis": -0.10747630452467094,
+  "acf1_ret": -0.010038903387459728,
+  "acf1_abs": 0.11740701588954745
+ },
+ {
+  "cell": [
+   "cda",
+   "trades_only",
+   "zi-only"
+  ],
+  "run_id": "baseline-1b539ae9-r4",
+  "n_ticks": 400,
+  "n_trades": 2489,
+  "volume": 2489,
+  "mean_price": 43.22,
+  "mean_spread": 6.0186335403726705,
+  "ret_std": 0.4393284653724672,
+  "ex_kurtosis": 11.673940202224276,
+  "acf1_ret": -0.3498155786305314,
+  "acf1_abs": 0.48968956011657516
+ },
+ {
+  "cell": [
+   "cda",
+   "trades_only",
+   "zi-only"
+  ],
+  "run_id": "baseline-1b539ae9-r5",
+  "n_ticks": 400,
+  "n_trades": 2445,
+  "volume": 2445,
+  "mean_price": 132.9225,
+  "mean_spread": 6.4338461538461535,
+  "ret_std": 0.06242432092250471,
+  "ex_kurtosis": 4.943720053241603,
+  "acf1_ret": 6.863592091588913e-05,
+  "acf1_abs": 0.35715328834558485
+ },
+ {
+  "cell": [
+   "cda",
+   "trades_only",
+   "zi-only"
+  ],
+  "run_id": "baseline-1b539ae9-r6",
+  "n_ticks": 400,
+  "n_trades": 2487,
+  "volume": 2487,
+  "mean_price": 114.96,
+  "mean_spread": 6.535825545171339,
+  "ret_std": 0.04471922876019672,
+  "ex_kurtosis": 0.010223788217929908,
+  "acf1_ret": -0.0637418251172821,
+  "acf1_abs": 0.14192954820481293
+ },
+ {
+  "cell": [
+   "cda",
+   "trades_only",
+   "zi-only"
+  ],
+  "run_id": "baseline-1b539ae9-r7",
+  "n_ticks": 400,
+  "n_trades": 2374,
+  "volume": 2374,
+  "mean_price": 64.24,
+  "mean_spread": 6.444099378881988,
+  "ret_std": 0.20550867335382955,
+  "ex_kurtosis": 27.02497245904237,
+  "acf1_ret": 0.025440136357694088,
+  "acf1_abs": 0.3812189187009655
+ },
+ {
+  "cell": [
+   "cda",
+   "trades_only",
+   "zi-only"
+  ],
+  "run_id": "baseline-1b539ae9-r8",
+  "n_ticks": 400,
+  "n_trades": 2433,
+  "volume": 2433,
+  "mean_price": 37.1125,
+  "mean_spread": 5.4969325153374236,
+  "ret_std": 0.5055059265466324,
+  "ex_kurtosis": 6.90904250588876,
+  "acf1_ret": -0.27294733673130633,
+  "acf1_abs": 0.43944079988862444
+ },
+ {
+  "cell": [
+   "cda",
+   "trades_only",
+   "zi-only"
+  ],
+  "run_id": "baseline-1b539ae9-r9",
+  "n_ticks": 400,
+  "n_trades": 2364,
+  "volume": 2364,
+  "mean_price": 151.4875,
+  "mean_spread": 5.830670926517572,
+  "ret_std": 0.035398772081474454,
+  "ex_kurtosis": 0.20895981388667773,
+  "acf1_ret": -0.005255105421171417,
+  "acf1_abs": 0.20768162687611974
+ },
+ {
+  "cell": [
+   "cda",
+   "trades_only",
+   "mixed"
+  ],
+  "run_id": "baseline-3cb3da09-r0",
+  "n_ticks": 400,
+  "n_trades": 1666,
+  "volume": 1666,
+  "mean_price": 86.2025,
+  "mean_spread": 6.060070671378092,
+  "ret_std": 0.06148477401534626,
+  "ex_kurtosis": -0.016485542641625717,
+  "acf1_ret": -0.06325260648919878,
+  "acf1_abs": 0.18198112610971268
+ },
+ {
+  "cell": [
+   "cda",
+   "trades_only",
+   "mixed"
+  ],
+  "run_id": "baseline-3cb3da09-r1",
+  "n_ticks": 400,
+  "n_trades": 1790,
+  "volume": 1790,
+  "mean_price": 81.03,
+  "mean_spread": 5.897610921501706,
+  "ret_std": 0.14446097638195843,
+  "ex_kurtosis": 46.44556070896989,
+  "acf1_ret": 0.20364863895928664,
+  "acf1_abs": 0.2778270212356773
+ },
+ {
+  "cell": [
+   "cda",
+   "trades_only",
+   "mixed"
+  ],
+  "run_id": "baseline-3cb3da09-r2",
+  "n_ticks": 400,
+  "n_trades": 1781,
+  "volume": 1781,
+  "mean_price": 181.19,
+  "mean_spread": 6.322695035460993,
+  "ret_std": 0.029857602952351226,
+  "ex_kurtosis": -0.2852706508728713,
+  "acf1_ret": -0.01805777283976909,
+  "acf1_abs": 0.07804683896526016
+ },
+ {
+  "cell": [
+   "cda",
+   "trades_only",
+   "mixed"
+  ],
+  "run_id": "baseline-3cb3da09-r3",
+  "n_ticks": 400,
+  "n_trades": 1695,
+  "volume": 1695,
+  "mean_price": 86.5775,
+  "mean_spread": 6.179054054054054,
+  "ret_std": 0.0712596614015073,
+  "ex_kurtosis": 1.4205019558370147,
+  "acf1_ret": -0.08320460878092403,
+  "acf1_abs": 0.3769905477967306
+ },
+ {
+  "cell": [
+   "cda",
+   "trades_only",
+   "mixed"
+  ],
+  "run_id": "baseline-3cb3da09-r4",
+  "n_ticks": 400,
+  "n_trades": 1750,
+  "volume": 1750,
+  "mean_price": 60.745,
+  "mean_spread": 6.173144876325089,
+  "ret_std": 0.22616687887017192,
+  "ex_kurtosis": 23.454181306655464,
+  "acf1_ret": -0.3037903439149281,
+  "acf1_abs": 0.4903089829774191
+ },
+ {
+  "cell": [
+   "cda",
+   "trades_only",
+   "mixed"
+  ],
+  "run_id": "baseline-3cb3da09-r5",
+  "n_ticks": 400,
+  "n_trades": 1697,
+  "volume": 1697,
+  "mean_price": 102.825,
+  "mean_spread": 5.989690721649485,
+  "ret_std": 0.04548378820004787,
+  "ex_kurtosis": -0.5461155428104094,
+  "acf1_ret": 0.011686949704138534,
+  "acf1_abs": 0.01516115935030886
+ },
+ {
+  "cell": [
+   "cda",
+   "trades_only",
+   "mixed"
+  ],
+  "run_id": "baseline-3cb3da09-r6",
+  "n_ticks": 400,
+  "n_trades": 1718,
+  "volume": 1718,
+  "mean_price": 207.1975,
+  "mean_spread": 6.404109589041096,
+  "ret_std": 0.02419174391034789,
+  "ex_kurtosis": -0.24841861735031356,
+  "acf1_ret": 0.04300599190672846,
+  "acf1_abs": 0.03244395445035199
+ },
+ {
+  "cell": [
+   "cda",
+   "trades_only",
+   "mixed"
+  ],
+  "run_id": "baseline-3cb3da09-r7",
+  "n_ticks": 400,
+  "n_trades": 1730,
+  "volume": 1730,
+  "mean_price": 83.3775,
+  "mean_spread": 6.0200668896321075,
+  "ret_std": 0.06454743355502125,
+  "ex_kurtosis": 0.31275772899913656,
+  "acf1_ret": 0.0992839328464131,
+  "acf1_abs": 0.16050768032050336
+ },
+ {
+  "cell": [
+   "cda",
+   "trades_only",
+   "mixed"
+  ],
+  "run_id": "baseline-3cb3da09-r8",
+  "n_ticks": 400,
+  "n_trades": 1692,
+  "volume": 1692,
+  "mean_price": 78.4625,
+  "mean_spread": 6.066433566433567,
+  "ret_std": 0.08214267850536093,
+  "ex_kurtosis": 3.4625898616266744,
+  "acf1_ret": 0.053515242077074664,
+  "acf1_abs": 0.33788737939511265
+ },
+ {
+  "cell": [
+   "cda",
+   "trades_only",
+   "mixed"
+  ],
+  "run_id": "baseline-3cb3da09-r9",
+  "n_ticks": 400,
+  "n_trades": 1722,
+  "volume": 1722,
+  "mean_price": 45.6975,
+  "mean_spread": 6.198606271777003,
+  "ret_std": 0.23053796430446644,
+  "ex_kurtosis": 19.379015149583825,
+  "acf1_ret": -0.06137806075277018,
+  "acf1_abs": 0.3558433839940748
+ },
+ {
+  "cell": [
+   "call_auction",
+   "trades_only",
+   "zi-only"
+  ],
+  "run_id": "baseline-c9d9fc10-r0",
+  "n_ticks": 400,
+  "n_trades": 1529,
+  "volume": 1529,
+  "mean_price": 37.22,
+  "mean_spread": 3.76986301369863,
+  "ret_std": 0.27371600434851173,
+  "ex_kurtosis": 18.21418431926068,
+  "acf1_ret": 0.08232120519816377,
+  "acf1_abs": 0.14386313538245804
+ },
+ {
+  "cell": [
+   "call_auction",
+   "trades_only",
+   "zi-only"
+  ],
+  "run_id": "baseline-c9d9fc10-r1",
+  "n_ticks": 400,
+  "n_trades": 1548,
+  "volume": 1548,
+  "mean_price": 110.8175,
+  "mean_spread": 4.138121546961326,
+  "ret_std": 0.035946133123657305,
+  "ex_kurtosis": 2.280649569364746,
+  "acf1_ret": -0.08897761279309965,
+  "acf1_abs": 0.15237660610590542
+ },
+ {
+  "cell": [
+   "call_auction",
+   "trades_only",
+   "zi-only"
+  ],
+  "run_id": "baseline-c9d9fc10-r2",
+  "n_ticks": 400,
+  "n_trades": 1520,
+  "volume": 1520,
+  "mean_price": 126.205,
+  "mean_spread": 3.970976253298153,
+  "ret_std": 0.029032184725755254,
+  "ex_kurtosis": 0.546211162747964,
+  "acf1_ret": -0.039378967018188,
+  "acf1_abs": 0.05017472967751342
+ },
+ {
+  "cell": [
+   "call_auction",
+   "trades_only",
+   "zi-only"
+  ],
+  "run_id": "baseline-c9d9fc10-r3",
+  "n_ticks": 400,
+  "n_trades": 1549,
+  "volume": 1549,
+  "mean_price": 51.1875,
+  "mean_spread": 3.9405405405405407,
+  "ret_std": 0.2053976666478582,
+  "ex_kurtosis": 20.81425681907968,
+  "acf1_ret": -0.11636527327448114,
+  "acf1_abs": 0.24843061909563074
+ },
+ {
+  "cell": [
+   "call_auction",
+   "trades_only",
+   "zi-only"
+  ],
+  "run_id": "baseline-c9d9fc10-r4",
+  "n_ticks": 400,
+  "n_trades": 1502,
+  "volume": 1502,
+  "mean_price": 60.045,
+  "mean_spread": 4.072,
+  "ret_std": 0.09130184198796508,
+  "ex_kurtosis": 7.789524154298773,
+  "acf1_ret": -0.0705674435298544,
+  "acf1_abs": 0.24524144553927824
+ },
+ {
+  "cell": [
+   "call_auction",
+   "trades_only",
+   "zi-only"
+  ],
+  "run_id": "baseline-c9d9fc10-r5",
+  "n_ticks": 400,
+  "n_trades": 1491,
+  "volume": 1491,
+  "mean_price": 73.02,
+  "mean_spread": 4.040214477211796,
+  "ret_std": 0.0690180183504973,
+  "ex_kurtosis": 10.755482106072048,
+  "acf1_ret": -0.10934221343122859,
+  "acf1_abs": 0.2199860067355119
+ },
+ {
+  "cell": [
+   "call_auction",
+   "trades_only",
+   "zi-only"
+  ],
+  "run_id": "baseline-c9d9fc10-r6",
+  "n_ticks": 400,
+  "n_trades": 1527,
+  "volume": 1527,
+  "mean_price": 73.3125,
+  "mean_spread": 3.992,
+  "ret_std": 0.06071960121442089,
+  "ex_kurtosis": 2.6338201216451145,
+  "acf1_ret": 0.06447702372276483,
+  "acf1_abs": 0.2307218697925718
+ },
+ {
+  "cell": [
+   "call_auction",
+   "trades_only",
+   "zi-only"
+  ],
+  "run_id": "baseline-c9d9fc10-r7",
+  "n_ticks": 400,
+  "n_trades": 1520,
+  "volume": 1520,
+  "mean_price": 174.6025,
+  "mean_spread": 3.867724867724868,
+  "ret_std": 0.021153173323337673,
+  "ex_kurtosis": 0.8758818798341079,
+  "acf1_ret": -0.16573943420880485,
+  "acf1_abs": 0.12912285274645302
+ },
+ {
+  "cell": [
+   "call_auction",
+   "trades_only",
+   "zi-only"
+  ],
+  "run_id": "baseline-c9d9fc10-r8",
+  "n_ticks": 400,
+  "n_trades": 1518,
+  "volume": 1518,
+  "mean_price": 173.265,
+  "mean_spread": 4.04054054054054,
+  "ret_std": 0.02260649984076165,
+  "ex_kurtosis": 1.04845677185516,
+  "acf1_ret": -0.021712866576402375,
+  "acf1_abs": 0.07897962309855776
+ },
+ {
+  "cell": [
+   "call_auction",
+   "trades_only",
+   "zi-only"
+  ],
+  "run_id": "baseline-c9d9fc10-r9",
+  "n_ticks": 400,
+  "n_trades": 1523,
+  "volume": 1523,
+  "mean_price": 145.72,
+  "mean_spread": 4.129032258064516,
+  "ret_std": 0.02404443656813234,
+  "ex_kurtosis": 0.17157556700147003,
+  "acf1_ret": -0.06692048588883294,
+  "acf1_abs": 0.051710423144637356
+ },
+ {
+  "cell": [
+   "call_auction",
+   "trades_only",
+   "mixed"
+  ],
+  "run_id": "baseline-e1c7b2a7-r0",
+  "n_ticks": 400,
+  "n_trades": 1090,
+  "volume": 1090,
+  "mean_price": 47.7875,
+  "mean_spread": 4.457725947521866,
+  "ret_std": 0.36587960352583115,
+  "ex_kurtosis": 12.541450332504825,
+  "acf1_ret": -0.1700148773792051,
+  "acf1_abs": 0.28784160474368725
+ },
+ {
+  "cell": [
+   "call_auction",
+   "trades_only",
+   "mixed"
+  ],
+  "run_id": "baseline-e1c7b2a7-r1",
+  "n_ticks": 400,
+  "n_trades": 1088,
+  "volume": 1088,
+  "mean_price": 33.6025,
+  "mean_spread": 4.1656626506024095,
+  "ret_std": 0.39919706605174066,
+  "ex_kurtosis": 7.371737059230783,
+  "acf1_ret": -0.13485607055047685,
+  "acf1_abs": 0.33096400520259267
+ },
+ {
+  "cell": [
+   "call_auction",
+   "trades_only",
+   "mixed"
+  ],
+  "run_id": "baseline-e1c7b2a7-r2",
+  "n_ticks": 400,
+  "n_trades": 1121,
+  "volume": 1121,
+  "mean_price": 27.8075,
+  "mean_spread": 4.771260997067449,
+  "ret_std": 0.28425320436166285,
+  "ex_kurtosis": 13.116424199358896,
+  "acf1_ret": 0.06316546456260416,
+  "acf1_abs": 0.14140772450809316
+ },
+ {
+  "cell": [
+   "call_auction",
+   "trades_only",
+   "mixed"
+  ],
+  "run_id": "baseline-e1c7b2a7-r3",
+  "n_ticks": 400,
+  "n_trades": 1132,
+  "volume": 1132,
+  "mean_price": 44.0275,
+  "mean_spread": 4.545994065281899,
+  "ret_std": 0.27691385398789164,
+  "ex_kurtosis": 25.992686803367416,
+  "acf1_ret": -0.19077446640245282,
+  "acf1_abs": 0.3720809058180287
+ },
+ {
+  "cell": [
+   "call_auction",
+   "trades_only",
+   "mixed"
+  ],
+  "run_id": "baseline-e1c7b2a7-r4",
+  "n_ticks": 400,
+  "n_trades": 1107,
+  "volume": 1107,
+  "mean_price": 179.76,
+  "mean_spread": 4.699708454810495,
+  "ret_std": 0.023526964850820037,
+  "ex_kurtosis": 0.9351628689049991,
+  "acf1_ret": -0.033586277941122906,
+  "acf1_abs": 0.1313085316656526
+ },
+ {
+  "cell": [
+   "call_auction",
+   "trades_only",
+   "mixed"
+  ],
+  "run_id": "baseline-e1c7b2a7-r5",
+  "n_ticks": 400,
+  "n_trades": 1093,
+  "volume": 1093,
+  "mean_price": 72.585,
+  "mean_spread": 4.661764705882353,
+  "ret_std": 0.06582246424895062,
+  "ex_kurtosis": 3.966747821830152,
+  "acf1_ret": -0.07947012239854273,
+  "acf1_abs": 0.20407018576795316
+ },
+ {
+  "cell": [
+   "call_auction",
+   "trades_only",
+   "mixed"
+  ],
+  "run_id": "baseline-e1c7b2a7-r6",
+  "n_ticks": 400,
+  "n_trades": 1106,
+  "volume": 1106,
+  "mean_price": 40.8975,
+  "mean_spread": 4.6398809523809526,
+  "ret_std": 0.21457484330177884,
+  "ex_kurtosis": 31.443540369060635,
+  "acf1_ret": -0.1876661509390496,
+  "acf1_abs": 0.38719306690599486
+ },
+ {
+  "cell": [
+   "call_auction",
+   "trades_only",
+   "mixed"
+  ],
+  "run_id": "baseline-e1c7b2a7-r7",
+  "n_ticks": 400,
+  "n_trades": 1074,
+  "volume": 1074,
+  "mean_price": 64.515,
+  "mean_spread": 4.363095238095238,
+  "ret_std": 0.2707792048170519,
+  "ex_kurtosis": 24.56103798636626,
+  "acf1_ret": -0.15727303424540734,
+  "acf1_abs": 0.4457873165148451
+ },
+ {
+  "cell": [
+   "call_auction",
+   "trades_only",
+   "mixed"
+  ],
+  "run_id": "baseline-e1c7b2a7-r8",
+  "n_ticks": 400,
+  "n_trades": 1097,
+  "volume": 1097,
+  "mean_price": 86.71,
+  "mean_spread": 4.553935860058309,
+  "ret_std": 0.0423237052949159,
+  "ex_kurtosis": 1.4663532972641153,
+  "acf1_ret": 0.012950436665456817,
+  "acf1_abs": 0.04217108158475851
+ },
+ {
+  "cell": [
+   "call_auction",
+   "trades_only",
+   "mixed"
+  ],
+  "run_id": "baseline-e1c7b2a7-r9",
+  "n_ticks": 400,
+  "n_trades": 1125,
+  "volume": 1125,
+  "mean_price": 99.5375,
+  "mean_spread": 4.691860465116279,
+  "ret_std": 0.03836502900896138,
+  "ex_kurtosis": 0.7071763766670589,
+  "acf1_ret": 0.07059789355494227,
+  "acf1_abs": 0.09559079283757156
+ }
+]

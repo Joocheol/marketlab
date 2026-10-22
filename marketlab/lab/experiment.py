@@ -71,6 +71,12 @@ def build_population(pop_spec, run_seed):
                     f"{group['role'][0]}{g}_{i}", group["role"],
                     list(group["values"]), group.get("pmin", 1),
                     group.get("pmax", 200), aseed, cash=group.get("cash")))
+            elif group["type"] == "noise":
+                from marketlab.agents.noise import NoiseTrader
+                agents.append(NoiseTrader(
+                    f"n{g}_{i}", cash=group.get("cash", 5000),
+                    shares=group.get("shares", 20),
+                    band=group.get("band", 10), seed=aseed))
             elif group["type"] == "spread":
                 agents.append(SpreadImprover(
                     f"r{g}_{i}", cash=group.get("cash", 500),
