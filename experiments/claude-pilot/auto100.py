@@ -55,7 +55,7 @@ def apply_decision(gw, eng, aid, orders, rnd, tag):
         gw.cancel(leftover, gw.epoch)
 
 
-def run_once(run_seed, rounds, mechanism="cda", personas=None):
+def run_once(run_seed, rounds, mechanism="cda", personas=None, setup=None):
     personas = personas or PERSONAS
     eng = MarketEngine(MECHANISMS[mechanism](), BestQuoteOnly(), seed=run_seed)
     gw = Gateway(eng)
@@ -65,21 +65,21 @@ def run_once(run_seed, rounds, mechanism="cda", personas=None):
         gw.create_account(aid, cash, shares)
     totals = (sum(c for _, c, _ in personas.values()),
               sum(s for _, _, s in personas.values()))
+    extras = setup(run_seed, agents) if setup else {}
+    fundamental = extras.get("V", FUNDAMENTAL)
 
-    recent, seen = [], 0
+    recent, seen, new_trades = [], 0, []
     shuffle_rng = random.Random(f"auto-shuffle-{run_seed}")
     for r in range(rounds):
         snaps = {aid: gw.snapshot(aid) for aid in agents}
-        ctx = {"round": r, "recent": list(recent)}
+        ctx = {"round": r, "recent": list(recent), "new_trades": list(new_trades)}
         decisions = [(aid, agents[aid].decide(snaps[aid], ctx)) for aid in agents]
         shuffle_rng.shuffle(decisions)
         for aid, orders in decisions:
             apply_decision(gw, eng, aid, orders, r, run_seed)
         gw.clock()
-        for ev in eng.log[seen:]:
-            if ev["type"] == "trade":
-                recent.append(ev["price"])
-        recent = recent[-5:]
+        new_trades = [ev["price"] for ev in eng.log[seen:] if ev["type"] == "trade"]
+        recent = (recent + new_trades)[-5:]
         seen = len(eng.log)
 
     errs = check_invariants(eng.state, totals)
@@ -91,13 +91,13 @@ def run_once(run_seed, rounds, mechanism="cda", personas=None):
            "last_price": last,
            "max_price": max(prices) if prices else None,
            "min_price": min(prices) if prices else None,
-           "violations": len(errs), "hash": state_hash(eng.state)[:16]}
+           "violations": len(errs), "hash": state_hash(eng.state)[:16], **extras}
     for aid, (_, cash0, shares0) in personas.items():
         a = eng.state["accounts"][aid]
         cash = a["cash"] + a["res_cash"]
         sh = a["shares"] + a["res_shares"]
-        row[f"pnl100_{aid}"] = (cash + sh * FUNDAMENTAL) - (cash0 + shares0 * FUNDAMENTAL)
-        mark = last if last is not None else FUNDAMENTAL
+        row[f"pnl100_{aid}"] = (cash + sh * fundamental) - (cash0 + shares0 * fundamental)
+        mark = last if last is not None else fundamental
         row[f"pnlL_{aid}"] = (cash + sh * mark) - (cash0 + shares0 * mark)
     return row
 
@@ -116,14 +116,17 @@ def main():
     rounds = int(sys.argv[2]) if len(sys.argv) > 2 else 40
     mechanism = sys.argv[3] if len(sys.argv) > 3 else "cda"
     variant = sys.argv[4] if len(sys.argv) > 4 else "base"
+    setup = None
     if variant == "anchored":
         from policies_anchored import PERSONAS as personas
+    elif variant == "signal":
+        from policies_signal import PERSONAS as personas, setup_run as setup
     else:
         personas = PERSONAS
-    rows = [run_once(s, rounds, mechanism, personas) for s in range(n_runs)]
+    rows = [run_once(s, rounds, mechanism, personas, setup) for s in range(n_runs)]
 
     # 결정론 확인: 런0 재실행 해시 일치
-    assert run_once(0, rounds, mechanism, personas)["hash"] == rows[0]["hash"], "non-deterministic run!"
+    assert run_once(0, rounds, mechanism, personas, setup)["hash"] == rows[0]["hash"], "non-deterministic run!"
     assert sum(r["violations"] for r in rows) == 0, "invariant violations!"
 
     out = {"runs": n_runs, "rounds": rounds, "mechanism": mechanism,
@@ -142,6 +145,23 @@ def main():
         sL["win_rate"] = sum(1 for r in rows if r[f"pnlL_{aid}"] > 0) / n_runs
         out["pnl_at_fundamental_100"][aid] = s100
         out["pnl_at_last_price"][aid] = sL
+
+    if variant == "signal":
+        import math
+        rs = [r for r in rows if r["last_price"] is not None]
+        dev = [abs(r["last_price"] - r["V"]) for r in rs]
+        sig_dev = [abs(sv - r["V"]) for r in rows for sv in r["signals"].values()]
+        mean_sig_dev = [abs(statistics.mean(list(r["signals"].values())) - r["V"]) for r in rows]
+        lp = [r["last_price"] for r in rs]; vv = [r["V"] for r in rs]
+        mlp, mv = statistics.mean(lp), statistics.mean(vv)
+        cov = sum((a - mlp) * (b - mv) for a, b in zip(lp, vv))
+        corr = cov / math.sqrt(sum((a - mlp) ** 2 for a in lp) * sum((b - mv) ** 2 for b in vv))
+        out["price_discovery"] = {
+            "mean_abs_close_minus_V": statistics.mean(dev),
+            "corr_close_V": corr,
+            "mean_abs_single_signal_error": statistics.mean(sig_dev),
+            "mean_abs_signal_mean_error": statistics.mean(mean_sig_dev),
+            "runs_with_trades": len(rs)}
 
     here = pathlib.Path(__file__).parent
     suffix = ("" if mechanism == "cda" else f"-{mechanism}") + ("" if variant == "base" else f"-{variant}")

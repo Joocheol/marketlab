@@ -1,0 +1,122 @@
+{
+ "runs": 100,
+ "rounds": 40,
+ "mechanism": "call_auction",
+ "variant": "signal",
+ "market": {
+  "n_trades": {
+   "mean": 3.5,
+   "sd": 3.922223652959936,
+   "min": 0,
+   "max": 13
+  },
+  "volume": {
+   "mean": 7.26,
+   "sd": 8.31163235010021,
+   "min": 0,
+   "max": 26
+  },
+  "last_price": {
+   "mean": 98.85915492957747,
+   "sd": 11.485762335104756,
+   "min": 74,
+   "max": 119
+  },
+  "max_price": {
+   "mean": 100.43661971830986,
+   "sd": 10.37405058563529,
+   "min": 80,
+   "max": 119
+  },
+  "min_price": {
+   "mean": 98.11267605633803,
+   "sd": 11.468652051539259,
+   "min": 74,
+   "max": 119
+  }
+ },
+ "runs_end_above_105": 21,
+ "runs_end_below_95": 27,
+ "runs_no_trades": 29,
+ "pnl_at_fundamental_100": {
+  "momentum": {
+   "mean": -1.71,
+   "sd": 12.588510875421527,
+   "min": -44,
+   "max": 42,
+   "win_rate": 0.24
+  },
+  "value": {
+   "mean": 4.62,
+   "sd": 11.600922986616803,
+   "min": -19,
+   "max": 66,
+   "win_rate": 0.32
+  },
+  "mm": {
+   "mean": -0.13,
+   "sd": 7.0476803261639205,
+   "min": -31,
+   "max": 20,
+   "win_rate": 0.25
+  },
+  "conservative": {
+   "mean": 0.13,
+   "sd": 0.917341349506906,
+   "min": 0,
+   "max": 7,
+   "win_rate": 0.02
+  },
+  "aggressive": {
+   "mean": -2.91,
+   "sd": 16.058035528996225,
+   "min": -63,
+   "max": 44,
+   "win_rate": 0.18
+  }
+ },
+ "pnl_at_last_price": {
+  "momentum": {
+   "mean": 0.38,
+   "sd": 7.73132157741051,
+   "min": -32,
+   "max": 28,
+   "win_rate": 0.19
+  },
+  "value": {
+   "mean": -0.46,
+   "sd": 6.6171189067646825,
+   "min": -45,
+   "max": 25,
+   "win_rate": 0.13
+  },
+  "mm": {
+   "mean": -3.11,
+   "sd": 8.93059094043919,
+   "min": -51,
+   "max": 8,
+   "win_rate": 0.07
+  },
+  "conservative": {
+   "mean": 0.05,
+   "sd": 0.5,
+   "min": 0,
+   "max": 5,
+   "win_rate": 0.01
+  },
+  "aggressive": {
+   "mean": 3.14,
+   "sd": 12.834628033865133,
+   "min": -43,
+   "max": 68,
+   "win_rate": 0.24
+  }
+ },
+ "price_discovery": {
+  "mean_abs_close_minus_V": 1.943661971830986,
+  "corr_close_V": 0.9763801226302631,
+  "mean_abs_single_signal_error": 4.232,
+  "mean_abs_signal_mean_error": 1.9560000000000002,
+  "runs_with_trades": 71
+ }
+}
