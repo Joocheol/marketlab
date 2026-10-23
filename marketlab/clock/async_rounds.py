@@ -44,9 +44,10 @@ class AsyncRounds:
         epoch = gw.epoch
         # ② LLM 호출 병렬 발사, 전부 수집
         results = await asyncio.gather(
-            *(a.acall(self.adapter, snaps[a.agent_id], r, epoch)
+            *(a.acall(getattr(a, "adapter", None) or self.adapter,
+                      snaps[a.agent_id], r, epoch)
               for a in self.agents),
-            return_exceptions=True)
+            return_exceptions=True)   # 에이전트별 어댑터 허용 → 모델 이질성 요인
         collected = []
         for agent, res in zip(self.agents, results):
             if isinstance(res, BudgetExhausted):

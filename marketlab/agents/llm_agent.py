@@ -13,15 +13,21 @@ import re
 
 from .base import AgentBase
 
-RESPONSE_RE = re.compile(r"^\s*(BUY|SELL)\s+(\d+)\s*@\s*(\d+)\s*$", re.IGNORECASE)
+# 후행 구두점·공백은 허용하되 형식 자체는 고정 (실제 LLM 출력의 자연 변이 흡수)
+RESPONSE_RE = re.compile(r"^\s*(BUY|SELL)\s+(\d+)\s*@\s*(\d+)\s*[.!]?\s*$",
+                         re.IGNORECASE)
 
 
 class LLMAgent(AgentBase):
-    def __init__(self, agent_id, persona, cash, shares):
+    def __init__(self, agent_id, persona, cash, shares, max_qty=None,
+                 max_orders=1):
         super().__init__(agent_id)
         self.persona = persona
         self.template_hash = hashlib.sha256(persona.encode()).hexdigest()[:16]
         self._cash, self._shares = cash, shares
+        self.max_qty = max_qty          # 브로커 강제 한도 (초과 주문은 클립)
+        self.max_orders = max_orders    # 마켓메이커는 2 (매수·매도 각 1)
+        self.n_clipped = 0
 
     def endowment(self):
         return (self._cash, self._shares)
@@ -41,20 +47,30 @@ class LLMAgent(AgentBase):
 
     def parse(self, text, snapshot):
         """응답 텍스트 -> Decision. 해석 불가면 None (기권으로 기록된다)."""
-        if text.strip().upper() == "HOLD":
-            return {"cancels": [], "orders": [], "replaces": []}
-        m = RESPONSE_RE.match(text)
-        if not m:
+        lines = [ln for ln in text.strip().splitlines() if ln.strip()]
+        if not lines:
             return None
-        side = m.group(1).lower()
-        qty, price = int(m.group(2)), int(m.group(3))
-        order = {"side": side, "price": price, "qty": qty}
-        open_orders = list(snapshot["me"]["open_orders"].keys())
-        if open_orders:
-            # 노출 교체는 원자적으로: 판단 시점에 열려 있던 가장 오래된 주문 대상
-            return {"cancels": [], "orders": [],
-                    "replaces": [{"old": sorted(open_orders)[0], "order": order}]}
-        return {"cancels": [], "orders": [order], "replaces": []}
+        if lines[0].upper().rstrip(".!").strip() == "HOLD":
+            return {"cancels": [], "orders": [], "replaces": []}
+        orders = []
+        for ln in lines[:self.max_orders]:
+            m = RESPONSE_RE.match(ln)
+            if not m:
+                break
+            qty = int(m.group(2))
+            if self.max_qty is not None and qty > self.max_qty:
+                qty = self.max_qty            # 브로커 측 위험한도 강제
+                self.n_clipped += 1
+            orders.append({"side": m.group(1).lower(),
+                           "price": int(m.group(3)), "qty": qty})
+        if not orders:
+            return None
+        open_orders = sorted(snapshot["me"]["open_orders"].keys())
+        replaces = [{"old": old, "order": o}
+                    for old, o in zip(open_orders, orders)]
+        rest = orders[len(replaces):]
+        return {"cancels": open_orders[len(orders):], "orders": rest,
+                "replaces": replaces}
 
     async def acall(self, adapter, snapshot, round_no, epoch):
         """어댑터 호출 + 파싱. (decision, 기권사유) 반환. BudgetExhausted는 전파."""

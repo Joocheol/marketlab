@@ -1,0 +1,28 @@
+[
+ {
+  "run": 0,
+  "wall_sec": 17.5,
+  "llm_calls": 40,
+  "n_trades": 1,
+  "prices": [
+   100
+  ],
+  "abstained": 1,
+  "invariant_violations": 0,
+  "record_replay_ok": true,
+  "call_log_replay_ok": true
+ },
+ {
+  "run": 1,
+  "wall_sec": 15.1,
+  "llm_calls": 40,
+  "n_trades": 1,
+  "prices": [
+   100
+  ],
+  "abstained": 1,
+  "invariant_violations": 0,
+  "record_replay_ok": true,
+  "call_log_replay_ok": true
+ }
+]
