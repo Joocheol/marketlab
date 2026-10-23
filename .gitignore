@@ -20,3 +20,6 @@ __pycache__/
 
 # 기준선 실험 런 기록 (대용량, record.json 재현 패키지들)
 experiments/baseline/runs/
+
+# 로컬 LLM 실험 원시 로그 (대용량)
+experiments/claude-pilot/state/local-exp/
