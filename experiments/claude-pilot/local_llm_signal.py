@@ -31,7 +31,7 @@ from marketlab.llm.adapter import BudgetGuard, CallLog, LiveAdapter  # noqa: E40
 from marketlab.llm.ollama import OllamaTransport, server_alive  # noqa: E402
 from marketlab.mechanisms.cda import CDA                   # noqa: E402
 
-QWEN, LLAMA = "qwen2.5:7b", "llama3.1:8b"
+QWEN, LLAMA, QWEN14 = "qwen2.5:7b", "llama3.1:8b", "qwen2.5:14b"
 
 PERSONAS = {
     "momentum": ("너는 공격적인 모멘텀 트레이더다. 가격 추세와 네 신호를 함께 활용해 "
@@ -57,6 +57,7 @@ CONDITIONS = {
     "llama": {aid: LLAMA for aid in PERSONAS},
     "mixed": {"momentum": LLAMA, "aggressive": LLAMA,
               "value": QWEN, "mm": QWEN, "conservative": QWEN},
+    "qwen14": {aid: QWEN14 for aid in PERSONAS},   # 판별 조건: 같은 계열, 2배 크기
 }
 CASH0, SH0 = 3000, 20          # V 상한 120에서도 매수 여력이 있도록 현금 확대
 
@@ -136,11 +137,16 @@ def run_one(condition, run_seed, rounds, out_dir):
 def main():
     runs = int(sys.argv[1]) if len(sys.argv) > 1 else 20
     rounds = int(sys.argv[2]) if len(sys.argv) > 2 else 20
+    only = sys.argv[3].split(",") if len(sys.argv) > 3 else list(CONDITIONS)
     assert server_alive(), "Ollama 서버가 응답하지 않습니다"
     out_dir = pathlib.Path(__file__).parent / "state" / "local-exp"
     out_dir.mkdir(parents=True, exist_ok=True)
     rows = []
-    for condition in CONDITIONS:
+    out_rows = pathlib.Path(__file__).parent / "local-signal-rows.json"
+    if out_rows.exists():
+        rows = [r for r in json.loads(out_rows.read_text())
+                if r["condition"] not in only]   # 기존 조건 결과 보존, 재실행 조건만 교체
+    for condition in only:
         for run_seed in range(runs):
             row = run_one(condition, run_seed, rounds, out_dir)
             rows.append(row)
@@ -148,8 +154,7 @@ def main():
                               ("condition", "run", "V", "n_trades",
                                "last_price", "wall_sec")},
                              ensure_ascii=False), flush=True)
-    (pathlib.Path(__file__).parent / "local-signal-rows.json").write_text(
-        json.dumps(rows, indent=1))
+    out_rows.write_text(json.dumps(rows, indent=1))
     print("DONE", len(rows), "runs")
 
 
