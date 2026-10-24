@@ -161,10 +161,13 @@ def main():
     out_rows = pathlib.Path(__file__).parent / "local-bubble-rows.json"
     rows = []
     if out_rows.exists():
-        rows = [r for r in json.loads(out_rows.read_text())
-                if r["condition"] not in only]
+        rows = json.loads(out_rows.read_text())
+    done = {(r["condition"], r["run"]) for r in rows if len(r["path"]) >= rounds}
+    rows = [r for r in rows if len(r["path"]) >= rounds]   # 짧은 스모크 행 제거
     for condition in only:
         for run_seed in range(runs):
+            if (condition, run_seed) in done:
+                continue                          # 이어달리기: 기존 런 보존
             row = run_one(condition, run_seed, rounds, out_dir)
             rows.append(row)
             print(json.dumps({k: row[k] for k in
