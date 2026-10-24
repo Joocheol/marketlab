@@ -20,13 +20,14 @@ RESPONSE_RE = re.compile(r"^\s*(BUY|SELL)\s+(\d+)\s*@\s*(\d+)\s*[.!]?\s*$",
 
 class LLMAgent(AgentBase):
     def __init__(self, agent_id, persona, cash, shares, max_qty=None,
-                 max_orders=1):
+                 max_orders=1, structured=False):
         super().__init__(agent_id)
         self.persona = persona
         self.template_hash = hashlib.sha256(persona.encode()).hexdigest()[:16]
         self._cash, self._shares = cash, shares
         self.max_qty = max_qty          # 브로커 강제 한도 (초과 주문은 클립)
         self.max_orders = max_orders    # 마켓메이커는 2 (매수·매도 각 1)
+        self.structured = structured    # JSON 스키마 강제 모드 (형식 축 제거)
         self.n_clipped = 0
 
     def endowment(self):
@@ -42,11 +43,42 @@ class LLMAgent(AgentBase):
             f"[시장] round={round_no} REF={ref} best_bid={bb} best_ask={ba}\n"
             f"[계좌] cash={me['cash']} shares={me['shares']} "
             f"open_orders={len(me['open_orders'])}\n"
-            f"[지시] 다음 한 줄 형식으로만 답하라: "
-            f"'BUY <수량> @ <가격>' 또는 'SELL <수량> @ <가격>' 또는 'HOLD'")
+            + (f"[지시] JSON으로만 답하라: {{\"orders\": [{{\"side\": \"buy|sell\", "
+               f"\"price\": 정수, \"qty\": 정수}}]}} — 거래하지 않으려면 빈 배열."
+               if self.structured else
+               f"[지시] 다음 한 줄 형식으로만 답하라: "
+               f"'BUY <수량> @ <가격>' 또는 'SELL <수량> @ <가격>' 또는 'HOLD'"))
+
+    def _finish(self, orders, snapshot):
+        """주문 목록에 브로커 한도 클립을 적용하고 교체/신규/취소로 변환."""
+        for o in orders:
+            if self.max_qty is not None and o["qty"] > self.max_qty:
+                o["qty"] = self.max_qty
+                self.n_clipped += 1
+        open_orders = sorted(snapshot["me"]["open_orders"].keys())
+        replaces = [{"old": old, "order": o}
+                    for old, o in zip(open_orders, orders)]
+        rest = orders[len(replaces):]
+        return {"cancels": open_orders[len(orders):], "orders": rest,
+                "replaces": replaces}
 
     def parse(self, text, snapshot):
         """응답 텍스트 -> Decision. 해석 불가면 None (기권으로 기록된다)."""
+        if self.structured:
+            import json as _json
+            try:
+                data = _json.loads(text)
+                orders = []
+                for o in list(data.get("orders", []))[:self.max_orders]:
+                    side = str(o["side"]).lower()
+                    price, qty = int(o["price"]), int(o["qty"])
+                    if side in ("buy", "sell") and qty >= 1 and 1 <= price <= 200:
+                        orders.append({"side": side, "price": price, "qty": qty})
+                if not orders:
+                    return {"cancels": [], "orders": [], "replaces": []}  # HOLD
+                return self._finish(orders, snapshot)
+            except (ValueError, KeyError, TypeError):
+                return None
         lines = [ln for ln in text.strip().splitlines() if ln.strip()]
         if not lines:
             return None
@@ -57,20 +89,11 @@ class LLMAgent(AgentBase):
             m = RESPONSE_RE.match(ln)
             if not m:
                 break
-            qty = int(m.group(2))
-            if self.max_qty is not None and qty > self.max_qty:
-                qty = self.max_qty            # 브로커 측 위험한도 강제
-                self.n_clipped += 1
             orders.append({"side": m.group(1).lower(),
-                           "price": int(m.group(3)), "qty": qty})
+                           "price": int(m.group(3)), "qty": int(m.group(2))})
         if not orders:
             return None
-        open_orders = sorted(snapshot["me"]["open_orders"].keys())
-        replaces = [{"old": old, "order": o}
-                    for old, o in zip(open_orders, orders)]
-        rest = orders[len(replaces):]
-        return {"cancels": open_orders[len(orders):], "orders": rest,
-                "replaces": replaces}
+        return self._finish(orders, snapshot)
 
     async def acall(self, adapter, snapshot, round_no, epoch):
         """어댑터 호출 + 파싱. (decision, 기권사유) 반환. BudgetExhausted는 전파."""

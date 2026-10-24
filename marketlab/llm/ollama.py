@@ -46,6 +46,8 @@ class OllamaTransport:
                 "num_predict": params.get("max_tokens", 120),
             },
         }
+        if params.get("format") is not None:
+            payload["format"] = params["format"]   # 구조화 출력: JSON 스키마 강제
         data = await asyncio.to_thread(
             _post, f"{self.base_url}/api/chat", payload, self.request_timeout)
         return {

@@ -58,7 +58,21 @@ CONDITIONS = {
     "mixed": {"momentum": LLAMA, "aggressive": LLAMA,
               "value": QWEN, "mm": QWEN, "conservative": QWEN},
     "qwen14": {aid: QWEN14 for aid in PERSONAS},   # 판별 조건: 같은 계열, 2배 크기
+    # 구조화 출력 조건 (형식 축 제거: JSON 스키마 강제)
+    "qwen-s": {aid: QWEN for aid in PERSONAS},
+    "llama-s": {aid: LLAMA for aid in PERSONAS},
+    "qwen14-s": {aid: QWEN14 for aid in PERSONAS},
 }
+STRUCTURED = {"qwen-s", "llama-s", "qwen14-s"}
+
+
+def order_schema(max_orders):
+    return {"type": "object", "required": ["orders"], "properties": {
+        "orders": {"type": "array", "maxItems": max_orders, "items": {
+            "type": "object", "required": ["side", "price", "qty"],
+            "properties": {"side": {"type": "string", "enum": ["buy", "sell"]},
+                           "price": {"type": "integer"},
+                           "qty": {"type": "integer"}}}}}}
 CASH0, SH0 = 3000, 20          # V 상한 120에서도 매수 여력이 있도록 현금 확대
 
 
@@ -76,17 +90,24 @@ def run_one(condition, run_seed, rounds, out_dir):
     model_map = CONDITIONS[condition]
     v, signals = draw_signals(run_seed)
     meta = {"factors": {"mechanism": "cda", "condition": condition,
-                        "structure": "signal"},
+                        "structure": "signal",
+                        "structured_output": condition in STRUCTURED},
             "seed": run_seed, "models": model_map}
     log = CallLog()
     budget = BudgetGuard(max_calls=rounds * len(PERSONAS) + 5)
     adapters = {}
 
-    def adapter_for(model):
-        if model not in adapters:
-            adapters[model] = LiveAdapter(OllamaTransport(), log, budget, model,
-                                          {"temperature": 0.7}, timeout=180.0)
-        return adapters[model]
+    structured = condition in STRUCTURED
+
+    def adapter_for(model, max_orders=1):
+        key = (model, max_orders if structured else 0)
+        if key not in adapters:
+            params = {"temperature": 0.7}
+            if structured:
+                params["format"] = order_schema(max_orders)
+            adapters[key] = LiveAdapter(OllamaTransport(), log, budget, model,
+                                        params, timeout=180.0)
+        return adapters[key]
 
     eng = engine_factory(meta)
     gw = Gateway(eng)
@@ -96,10 +117,14 @@ def run_one(condition, run_seed, rounds, out_dir):
                 f"사이에서 정해졌고 아무도 모른다. 너의 사적 신호: {signals[aid]} "
                 f"(V±최대 8, 무편향). 다른 참가자 4명도 각자 독립적인 신호를 가진다. "
                 f"이 구조는 모두가 안다.")
-        a = LLMAgent(aid, persona + "\n" + info + "\n" + BASE_STAMP,
+        stamp = BASE_STAMP if not structured else (
+            "[시장 규칙] 단일 종목 지정가 시장. 가격은 1~200 정수. 미체결 주문은 "
+            "새 주문 시 교체된다. 매수는 현금, 매도는 보유 주식 범위 내에서만 체결된다. "
+            "JSON으로만 답하라.")
+        a = LLMAgent(aid, persona + "\n" + info + "\n" + stamp,
                      cash=CASH0, shares=SH0, max_qty=max_qty,
-                     max_orders=max_orders)
-        a.adapter = adapter_for(model_map[aid])
+                     max_orders=max_orders, structured=structured)
+        a.adapter = adapter_for(model_map[aid], max_orders)
         agents.append(a)
     runner = AsyncRounds(gw, agents, agents[0].adapter, master_seed=run_seed)
     runner.setup()
